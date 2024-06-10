@@ -1,2 +1,2 @@
-# AstroTraker_asm
+# AstroTracker_asm
 Playground with Vite, Vue , Ts
