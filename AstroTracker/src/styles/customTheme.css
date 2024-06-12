@@ -1,0 +1,44 @@
+/* Overriding primary color */
+:root {
+  --font-heading: 'MuseoModerno', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  /* --secondary-color: #ff9800; */
+  /* --primary-color: #4caf50; */
+}
+
+/* :root {
+  --primary-color: #4caf50;
+  --primary-color-text: #ffffff;
+  --surface-ground: #303030;
+  --surface-section: #383838;
+  --surface-card: #424242;
+  --surface-overlay: #2a2a2a;
+  --surface-hover: #1e1e1e;
+  --surface-border: #454545;
+  --text-color: #e0e0e0;
+  --text-color-secondary: #b3b3b3;
+  --input-border: #565656;
+  --input-bg: #3a3a3a;
+  --input-text-color: #e0e0e0;
+  --button-bg: #4caf50;
+  --button-text-color: #ffffff;
+} */
+  
+/* Override specific component styles */
+/* .p-button {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+} */
+/* 
+.p-button:hover {
+  background-color: var(--secondary-color) !important;
+  border-color: var(--secondary-color) !important;
+} */
+
+body {
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}

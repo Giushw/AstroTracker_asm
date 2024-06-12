@@ -1,4 +1,11 @@
-// Function to format a date as 'YYYY-MM-DD'
+/**
+ * formatDate
+ * Format passed Date into 'YYYY-MM-DD'.
+ * @param {Date} date - The Date to transform.
+ * @returns {string} A promise that resolves to the fetched Neo data.
+ * @example 
+ * const data = await formatDate(new Date());
+ */
 export const formatDate = (date: Date): string => {
   const year = date.getFullYear();
   // getMonth() is zero-based

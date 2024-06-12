@@ -1,10 +1,10 @@
 
 MONITORAGGIO NEAR EARTH OBJECTS:
  
-Sfruttando le api messe a disposizione della NASA che trovi a questo indirizzo: https://api.nasa.gov/ , utilizzando l’end-point “Asteroids – NeoWs”, dovrai realizzare una piccola interfaccia per monitorare gli oggetti che passano vicino alla terra nell’ultimo giorno completo disponibile.
+Sfruttando le api messe a disposizione della NASA che trovi a questo indirizzo: https://api.nasa.gov/ , 
+utilizzando l’end-point “Asteroids – NeoWs”, 
+dovrai realizzare una piccola interfaccia per monitorare gli oggetti che passano vicino alla terra nell’ultimo giorno completo disponibile.
  
-Qui puoi trovare un mockup Figma e il prototipo: https://www.figma.com/design/Bwq7FlBGT7uTyg2xivSnzf/TVA_Code-Challenge_2023_Giuseppe?m=auto&t=jJ2aq92cMnsbK4jP-6
-
 La visualizzazione mostra gli asteroidi mappati su uno scatterplot.
 Ogni asteroide è rappresentato da due cerchi: quello interno visualizza il raggio minimo, quello esterno il raggio massimo dell'asteroide.
 Il cerchio è posizionato sulla griglia in base al tempo trascorso dall’ultimo passaggio sull’asse delle ascisse e in base alla distanza dalla terra sull’asse delle ordinate.
