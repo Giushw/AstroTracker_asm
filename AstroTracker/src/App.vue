@@ -1,76 +1,66 @@
 <template>
   <main class="home-wrapper">
+    <!-- <Home :srcUrl="apodData.value[0].hdurl" /> -->
     <Home />
   </main>
-  <!-- <div>
-    <Chart type="scatter" :data="scatterData"></Chart>
-  </div> -->
+ 
 </template>
 
 <script setup lang="ts">
   import {ref, type Ref, onMounted} from 'vue';
-  import Chart from 'primevue/chart';
-  import {getFeed, getLookup, getBrowse} from './server/NeoWs';
   import {getApod} from './server/Apod';
+  import type {Apods} from './types/decoders/Apods';
   import Home from './layouts/Home.vue';
 
-  const scatterData: Ref<any> = ref({
-    datasets: [
-      {
-        label: 'Scatter Dataset',
-        data: [
-          { x: -10, y: 0 },
-          { x: 0, y: 10 },
-          { x: 10, y: 5 },
-          { x: 0.5, y: 5.5 },
-        ],
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        borderColor: 'rgba(75, 192, 192, 1)',
-        borderWidth: 1,
-      },
-    ],
-  });
+  const apodData: Ref<Apods | null> = ref(null);
+  const loading = ref(true);
 
-    const feedData: Ref<unknown> = ref(null);
-    const lookupData:Ref<unknown> = ref(null);
-    const browseData: Ref<unknown> = ref(null);
-    const apodData: Ref<unknown> = ref(null);
-    const loading = ref(true);
+  // console.log('loading 1: ', loading.value);
+  // console.log('apodData 1: ', apodData.value);
 
-    // console.log('feedDatao 1: ', feedData.value);
-    // console.log('lookupData 1: ', lookupData.value);
-    // console.log('browseData 1: ', browseData.value);
-    // console.log('loading 1: ', loading.value);
-    // console.log('apodData 1: ', apodData.value);
+  const fetchData = async () => {
+    try {
+      const data = await getApod();
+      apodData.value = data;
+      console.log('Fetched data: ', data); // Log the fetched data
+      console.log('apodData.value: ', apodData.value); // Log the ref value
+      
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    } finally {
+      loading.value = false;
+    }
+  };
 
-    const fetchData = async () => {
-      try {
-        feedData.value = await getFeed('2023-06-01', '2023-06-07');
-        lookupData.value = await getLookup('3542519');
-        browseData.value = await getBrowse();
-        apodData.value = await getApod();
-
-        // console.log('feedDatao 2: ', feedData.value);
-        // console.log('lookupData 2: ', lookupData.value);
-        // console.log('browseData 2: ', browseData.value);
-        // console.log('loading 2: ', loading.value);
-        // console.log('apodData 2: ', apodData.value);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      } finally {
-        loading.value = false;
-      }
-    };
-
-    onMounted(fetchData);
+  onMounted(fetchData);
 </script>
 
 <style lang="scss">
   .home {
     &-wrapper {
+      position: relative;
       height: 100vh;
       width: 100vw;
-      padding: 50px 120px;
+      padding: 28px 26px;
+      background: no-repeat url('./assets/images/wall_def.png');
+      z-index: 0
+      ;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: var(--grey-gradient);
+        height: 100vh;
+        width: 100vw;
+        z-index: 1;
+      }
+
+
+      @media  screen and (min-width: 769px) {
+        padding: 50px 120px;
+      }
     }
   }
 </style>

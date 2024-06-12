@@ -1,11 +1,11 @@
 <template>
   <Splitter class="home-splitter_wrapper">
-    <SplitterPanel class="flex align-items-center justify-content-center" :size="75">
-      Panel 1 
+    <SplitterPanel class="flex align-items-center justify-content-center" :size="70">
+      <MainView />
     </SplitterPanel>
 
-    <SplitterPanel class="flex align-items-center justify-content-center" :size="25"  :minSize="10">
-      Panel 2
+    <SplitterPanel class="flex align-items-center justify-content-center" :size="30"  :minSize="10">
+      <AsideMenu />
     </SplitterPanel>
   </Splitter>
 </template>
@@ -13,6 +13,8 @@
 <script setup lang="ts">
   import Splitter from 'primevue/splitter';
   import SplitterPanel from 'primevue/splitterpanel';
+  import MainView from '../components/home/MainView.vue';
+  import AsideMenu from '../components/home/AsideMenu.vue';
 
 </script>
 
@@ -20,8 +22,10 @@
   .home {
     &-splitter {
       &_wrapper {
+        position: relative;
         height: 100%;
         width: 100%;
+        z-index: 2;
       }
     }
   }
