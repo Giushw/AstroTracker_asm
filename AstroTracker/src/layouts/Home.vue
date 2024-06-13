@@ -1,10 +1,10 @@
 <template>
-  <Splitter class="home-splitter_wrapper">
-    <SplitterPanel class="flex align-items-center justify-content-center" :size="70">
+  <Splitter class="home-splitter_wrapper" :gutterSize="40">
+    <SplitterPanel :size="70" :minSize="70">
       <MainView />
     </SplitterPanel>
 
-    <SplitterPanel class="flex align-items-center justify-content-center" :size="30"  :minSize="10">
+    <SplitterPanel :size="30"  :minSize="30">
       <AsideMenu />
     </SplitterPanel>
   </Splitter>
@@ -26,7 +26,8 @@
         height: 100%;
         width: 100%;
         z-index: 2;
-      }
-    }
-  }
+        background-color: transparent;
+      };
+    };
+  };
 </style>

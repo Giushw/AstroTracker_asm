@@ -1,31 +1,16 @@
 <template>
   <div class="main-wrapper">
-    <Chart type="scatter" :data="scatterData"></Chart>
+    <Intestation :day="'25 January 2023'"/>
+
+    <AstroGraph />
   </div>
 </template>
 
 <script setup lang="ts">
   import {ref, type Ref, onMounted} from 'vue';
-  import Chart from 'primevue/chart';
+  import Intestation from './mainView/Intestation.vue';
+  import AstroGraph from './mainView/AstroGraph.vue';
   import {getFeed, getLookup, getBrowse} from '../../server/NeoWs';
-
-  
-  const scatterData: Ref<any> = ref({
-    datasets: [
-      {
-        label: 'Scatter Dataset',
-        data: [
-          { x: -10, y: 0 },
-          { x: 0, y: 10 },
-          { x: 10, y: 5 },
-          { x: 0.5, y: 5.5 },
-        ],
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        borderColor: 'rgba(75, 192, 192, 1)',
-        borderWidth: 1,
-      },
-    ],
-  });
 
   const feedData: Ref<unknown> = ref(null);
   const lookupData:Ref<unknown> = ref(null);
@@ -58,8 +43,10 @@
 <style lang="scss">
   .main {
     &-wrapper {
+      display: flex;
+      flex-direction: column;
       width: 100%;
       height: 100%;
-    }
-  }
+    };
+  };
 </style>

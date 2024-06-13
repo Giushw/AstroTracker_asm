@@ -1,9 +1,9 @@
 <template>
   <main class="home-wrapper">
-    <!-- <Home :srcUrl="apodData.value[0].hdurl" /> -->
     <Home />
   </main>
- 
+
+  <FooterBanner />
 </template>
 
 <script setup lang="ts">
@@ -11,6 +11,8 @@
   import {getApod} from './server/Apod';
   import type {Apods} from './types/decoders/Apods';
   import Home from './layouts/Home.vue';
+  import FooterBanner from './components/home/FooterBanner.vue';
+
 
   const apodData: Ref<Apods | null> = ref(null);
   const loading = ref(true);
@@ -22,8 +24,8 @@
     try {
       const data = await getApod();
       apodData.value = data;
-      console.log('Fetched data: ', data); // Log the fetched data
-      console.log('apodData.value: ', apodData.value); // Log the ref value
+      console.log('Fetched data: ', data); 
+      console.log('apodData.value: ', apodData.value);
       
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -36,31 +38,32 @@
 </script>
 
 <style lang="scss">
+  @import './styles/customTheme.scss';
+
   .home {
     &-wrapper {
       position: relative;
+      z-index: 0;
       height: 100vh;
       width: 100vw;
-      padding: 28px 26px;
+      padding: 1.75rem 1.625rem;
       background: no-repeat url('./assets/images/wall_def.png');
-      z-index: 0
-      ;
+      background-size: cover;
+
+      @media screen and (min-width: 769px) {
+        padding: 3.125rem 7.5rem;
+      };
 
       &::after {
         content: '';
         position: absolute;
+        z-index: 1;
         top: 0;
         left: 0;
-        background: var(--grey-gradient);
         height: 100vh;
         width: 100vw;
-        z-index: 1;
-      }
-
-
-      @media  screen and (min-width: 769px) {
-        padding: 50px 120px;
-      }
-    }
-  }
+        background: var(--gradient-grey);
+      };
+    };
+  };
 </style>

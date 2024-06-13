@@ -1,0 +1,11 @@
+/* Override generic component styles */
+@import './overrides/splitter';
+@import './overrides/inputswitch';
+@import './overrides/panel';
+
+/* OverRide */
+.p-card-body {
+  padding: 0;
+  width: 100%;
+  height: 100%
+};

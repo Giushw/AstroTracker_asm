@@ -1,0 +1,14 @@
+// Splitter
+.p-splitter {
+  border: 0;
+  background-color: transparent;
+
+  & .p-splitter-gutter {
+    background-color: transparent;
+  };
+
+  & .p-splitter-gutter-handle {
+    visibility: hidden;
+    cursor: none;
+  };
+};
