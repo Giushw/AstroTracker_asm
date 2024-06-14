@@ -1,9 +1,9 @@
 <template>
-  <div class="main-wrapper">
+  <main class="main-wrapper">
     <Intestation :day="'25 January 2023'" :is-mobile="false"/>
 
     <AstroGraph />
-  </div>
+  </main>
 </template>
 
 <script setup lang="ts">

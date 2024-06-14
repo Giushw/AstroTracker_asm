@@ -3,13 +3,12 @@
     <Intestation :day="'25 January 2023'" is-mobile/>
 
     <!-- <AstroCards /> -->
-    <div class="home-mobile_placeholder"></div>
+    <AstroCardList />
+    <!-- <div class="home-mobile_placeholder"></div> -->
 
     <div class="home-mobile_legendBtn">
       <slideDialog label="Legend" slide="bottom" allign="center">
-        <p>
-          Con il termine lorem ipsum si indica un testo segnaposto utilizzato da grafici, progettisti, programmatori e tipografi a modo riempitivo per bozzetti e prove grafiche.
-        </p>
+        <LegendInfo is-mobile/>
       </slideDialog>
     </div>
   </div>
@@ -17,8 +16,9 @@
 
 <script setup lang="ts">
   import Intestation from '../components/home/mainView/Intestation.vue';
-  // import AstroCards from '../components/home/mainView/AstrCards.vue';
+  import AstroCardList from '../components/home/mainView/AstroCardList.vue';
   import slideDialog from '../components/common/SlideDialog.vue';
+  import LegendInfo from '../components/common/LegendInfo.vue';
 </script>
 
 <style lang="scss">

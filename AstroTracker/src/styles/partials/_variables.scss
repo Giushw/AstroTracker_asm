@@ -9,14 +9,18 @@
   --color-grey-500: #999999;
   --color-grey-700: #666666;
   --color-grey-900: #333333;
-  --gradient-grey: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(47, 47, 47, 0.8) 100%);
-  --trasparent-grey: rgba(55, 55, 55, 0.4);
 
   --color-danger-300: #FFC4C4;
   --color-danger-700: #911A1A;
-  --gradient-danger: radial-gradient(50% 50% at 50% 50%, #FFC4C4 49.14%, rgba(55, 15, 15, 0.11) 100%);
   
   --color-safe-300: #CADCFF;
   --color-safe-700: #3967DE;
+
+  --trasparent-grey: rgba(55, 55, 55, 0.4);
+
+  --gradient-white:radial-gradient(50% 50% at 50% 50%, #FFFFFF 48.96%, rgba(255, 255, 255, 0) 100%);
+  --gradient-grayscale: radial-gradient(50% 50% at 50% 50%, rgba(177, 177, 177, 0.11) 53.88%, #2E2E2E 100%);
+  --gradient-grey: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(47, 47, 47, 0.8) 100%);
+  --gradient-danger: radial-gradient(50% 50% at 50% 50%, #FFC4C4 49.14%, rgba(55, 15, 15, 0.11) 100%);
   --gradient-safe: radial-gradient(50% 50% at 50% 50%, #7995DF 48.96%, rgba(13, 41, 96, 0) 100%);
 };

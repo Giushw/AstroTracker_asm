@@ -31,12 +31,12 @@
     >
       <p class="main-intestation_info">
         Con il termine lorem ipsum si indica un testo segnaposto utilizzato da grafici, progettisti. 
-        <a href="#">nasa.com</a>
+        <a href="https://www.nasa.gov/">nasa.com</a>
       </p>
       
       <p class="main-intestation_info --imotd">
         Image of the day:  
-        <a href="#">Calliope galaxy, James Webb Telescope</a>
+        <a href="https://images.nasa.gov/">Calliope galaxy, James Webb Telescope</a>
       </p>
     </SplitterPanel>
   </Splitter>
@@ -110,7 +110,9 @@
 
       &_info {
         &:first-of-type {
-          margin-bottom: 1rem;
+          @include desktop {
+            margin-bottom: 1rem;
+          };
         };
 
         a {

@@ -1,19 +1,21 @@
 <template>
-  <Splitter layout="vertical" class="home-aside_wrapper" :gutter-size="10">
-    <SplitterPanel :size="30" :min-size="30"> 
-      <SpeedMode  @switch-speed-mode="(e) => console.log('speed mode is active? ', e.value)"/>
-    </SplitterPanel>
-    <SplitterPanel :size="80"  :min-size="80">
-      <LegendInfo />
-    </SplitterPanel>
-  </Splitter>
+  <aside>
+    <Splitter layout="vertical" class="home-aside_wrapper" :gutter-size="10">
+      <SplitterPanel :size="30" :min-size="30"> 
+        <SpeedMode  @switch-speed-mode="(e) => console.log('speed mode is active? ', e.value)"/>
+      </SplitterPanel>
+      <SplitterPanel :size="80"  :min-size="80">
+        <LegendWrapper />
+      </SplitterPanel>
+    </Splitter>
+  </aside>
 </template>
 
 <script setup lang="ts">
   import Splitter from 'primevue/splitter';
   import SplitterPanel from 'primevue/splitterpanel';
   import SpeedMode from './asideMenu/SpeedMode.vue';
-  import LegendInfo from '../common/LegendInfo.vue';
+  import LegendWrapper from './asideMenu/LegendWrapper.vue';
 </script>
 
 <style lang="scss">
