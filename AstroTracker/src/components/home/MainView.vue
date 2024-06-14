@@ -1,6 +1,6 @@
 <template>
   <div class="main-wrapper">
-    <Intestation :day="'25 January 2023'"/>
+    <Intestation :day="'25 January 2023'" :is-mobile="false"/>
 
     <AstroGraph />
   </div>

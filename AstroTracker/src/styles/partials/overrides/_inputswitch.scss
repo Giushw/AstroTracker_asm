@@ -1,9 +1,9 @@
-// Inputswitch
+/* Inputswitch */
 .p-inputswitch  {
   width: 39px;
   height: 16px;
 
-  @media screen and (min-width: 769px) {
+  @include desktop {
     width: 60px;
     height: 25px;
   };
@@ -21,12 +21,12 @@
       top: 55%;
       background-color: var(--color-grey-500);
 
-      @media screen and (min-width: 769px) {
+      @include desktop {
         width: 20px;
         height: 20px;
         top: 45%;
       };
-    }
+    };
   };
 
   &.p-highlight {
@@ -35,20 +35,20 @@
         background-color: var(--color-grey-900);
         transform: translateX(1.2rem);
 
-        @media screen and (min-width: 769px) {
+        @include desktop {
           transform: translateX(2rem);
         };
-      }
-    }
-  }
+      };
+    };
+  };
 
-  &.--speed {
-    &.p-highlight {
-      & .p-inputswitch-slider {
-        &::before {
-          // insert 'scia'
-        }
-      }
-    }
-  }
+  // &.--speed {
+  //   &.p-highlight {
+  //     & .p-inputswitch-slider {
+  //       &::before {
+  //         // insert 'scia'
+  //       }
+  //     }
+  //   }
+  // }
 };

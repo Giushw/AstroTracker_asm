@@ -6,7 +6,6 @@
 
 <script setup lang="ts">
   import Image from 'primevue/image';
-
 </script>
 
 <style lang="scss">
@@ -15,12 +14,13 @@
       width: 100vw;
       padding: 4.563rem 3.25rem 0.938rem;
       background-color: var(--color-white);
+      position: relative;
+      z-index: 3;
 
-      @media screen and (min-width: 769px) {
+      @include desktop {
         padding :0.813rem 0;
         border-radius: 25% 25% 0 0;
         position: absolute;
-        z-index: 3;
         bottom: 0;
         left: 0;
       };
@@ -32,7 +32,7 @@
       justify-content: center;
       align-items: flex-end;
 
-      @media screen and (min-width: 769px) {
+      @include desktop {
         align-items: center;
       };
     }

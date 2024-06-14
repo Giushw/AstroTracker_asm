@@ -8,5 +8,12 @@ export default defineConfig({
     watch: {
       usePolling: true
     }
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "./src/styles/partials/_mixins";`
+      }
+    }
   }
 });

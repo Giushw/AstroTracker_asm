@@ -1,5 +1,5 @@
 <template>
-  <Splitter class="home-splitter_wrapper" :gutterSize="40">
+  <Splitter class="home-desktop_wrapper" :gutterSize="40">
     <SplitterPanel :size="70" :minSize="70">
       <MainView />
     </SplitterPanel>
@@ -20,7 +20,7 @@
 
 <style lang="scss">
   .home {
-    &-splitter {
+    &-desktop {
       &_wrapper {
         position: relative;
         height: 100%;

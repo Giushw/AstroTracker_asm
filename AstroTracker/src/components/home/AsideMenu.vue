@@ -13,7 +13,7 @@
   import Splitter from 'primevue/splitter';
   import SplitterPanel from 'primevue/splitterpanel';
   import SpeedMode from './asideMenu/SpeedMode.vue';
-  import LegendInfo from './asideMenu/LegendInfo.vue';
+  import LegendInfo from '../common/LegendInfo.vue';
 </script>
 
 <style lang="scss">

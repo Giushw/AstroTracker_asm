@@ -1,21 +1,39 @@
 <template>
   <main class="home-wrapper">
-    <Home />
+    <template v-if="currentLayout === 'HomeD'">
+      <HomeD />
+    </template>
+
+    <template v-else>
+      <HomeM />
+    </template>
   </main>
 
   <FooterBanner />
 </template>
 
 <script setup lang="ts">
-  import {ref, type Ref, onMounted} from 'vue';
-  import {getApod} from './server/Apod';
+  import {
+    type Ref,
+    type ComputedRef,
+    computed,
+    ref,
+    onMounted,
+    onUnmounted
+  } from 'vue';
   import type {Apods} from './types/decoders/Apods';
-  import Home from './layouts/Home.vue';
+  import {getApod} from './server/Apod';
+  import HomeD from './layouts/HomeD.vue';
+  import HomeM from './layouts/HomeM.vue';
   import FooterBanner from './components/home/FooterBanner.vue';
-
 
   const apodData: Ref<Apods | null> = ref(null);
   const loading = ref(true);
+  const width = ref(window.innerWidth);
+
+  const handleResize = () => {
+    width.value = window.innerWidth;
+  };
 
   // console.log('loading 1: ', loading.value);
   // console.log('apodData 1: ', apodData.value);
@@ -34,24 +52,38 @@
     }
   };
 
-  onMounted(fetchData);
+  onMounted(() => {
+    window.addEventListener('resize', handleResize);
+    fetchData()
+  });
+
+  onUnmounted(() => {
+    window.removeEventListener('resize', handleResize);
+  });
+
+  type ActiveView = 'HomeD' | 'HomeM';
+
+  const currentLayout: ComputedRef<ActiveView> = computed(() => {
+    return width.value > 768 ? 'HomeD' : 'HomeM';
+  });
 </script>
 
 <style lang="scss">
-  @import './styles/customTheme.scss';
+  @import './styles/customTheme';
 
   .home {
     &-wrapper {
       position: relative;
       z-index: 0;
-      height: 100vh;
+      height: 100%;
       width: 100vw;
       padding: 1.75rem 1.625rem;
       background: no-repeat url('./assets/images/wall_def.png');
       background-size: cover;
 
-      @media screen and (min-width: 769px) {
+      @include desktop {
         padding: 3.125rem 7.5rem;
+        height: 100vh;
       };
 
       &::after {
@@ -60,9 +92,13 @@
         z-index: 1;
         top: 0;
         left: 0;
-        height: 100vh;
+        height: 100%;
         width: 100vw;
         background: var(--gradient-grey);
+
+        @include desktop {
+          height: 100vh;
+        };
       };
     };
   };

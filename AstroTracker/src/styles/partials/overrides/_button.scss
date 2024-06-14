@@ -1,0 +1,12 @@
+/* Button */
+.p-button {
+  width: 130px;
+  height: 32px;
+  padding: 5px 10px;
+  border: 0;
+  background-color: var(--color-grey-700);
+
+  &.p-button-rounded {
+    border-radius: 15px
+  }
+};

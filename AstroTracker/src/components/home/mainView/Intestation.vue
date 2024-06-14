@@ -1,18 +1,40 @@
 <template>
-  <Splitter class="main-intestation_wrapper" :gutter-size="40">
-    <SplitterPanel :size="40" :min-size="40" class="main-intestation_logoTypeGroup"> 
+  <Splitter 
+    class="main-intestation_wrapper"
+    :gutter-size="40" 
+    :layout="isMobile ? 'vertical' : 'horizontal'"
+  >
+    <SplitterPanel 
+      class="main-intestation_logoTypeGroup"
+      :size="isMobile ? 50 : 40" 
+      :min-size="isMobile ? 50 : 40" 
+    > 
       <h1 class="main-intestation_logoType">Astro tracker</h1>
         
-      <h3 class="main-intestation_eyelet">{{day}}</h3>
+      <div class="main-intestation_eyeletGroup">
+        <h3 class="main-intestation_eyelet">{{day}}</h3>
+
+        <template v-if="isMobile">
+          <SlideDialog label="Info" slide="top" allign="right">
+            <p>
+              Con il termine lorem ipsum si indica un testo segnaposto utilizzato da grafici, progettisti, programmatori e tipografi a modo riempitivo per bozzetti e prove grafiche.
+            </p>
+          </SlideDialog>
+        </template>
+      </div>
     </SplitterPanel>
 
-    <SplitterPanel :size="60"  :min-size="60" class="main-intestation_infoGroup">
+    <SplitterPanel
+      class="main-intestation_infoGroup"
+      :size="isMobile ? 50 : 60"  
+      :min-size="isMobile ? 50 : 60"  
+    >
       <p class="main-intestation_info">
         Con il termine lorem ipsum si indica un testo segnaposto utilizzato da grafici, progettisti. 
         <a href="#">nasa.com</a>
       </p>
       
-      <p class="main-intestation_info">
+      <p class="main-intestation_info --imotd">
         Image of the day:  
         <a href="#">Calliope galaxy, James Webb Telescope</a>
       </p>
@@ -21,12 +43,13 @@
 </template>
 
 <script setup lang="ts">
-  import {defineProps} from 'vue';
   import Splitter from 'primevue/splitter';
   import SplitterPanel from 'primevue/splitterpanel';
+  import SlideDialog from '../../common/SlideDialog.vue';
 
   defineProps<{
     day: string;
+    isMobile: boolean;
   }>();
 </script>
 
@@ -35,25 +58,76 @@
     &-intestation {
       &_wrapper {
         width: 100%;
-        max-height: 5rem;
+        margin-bottom: 2.5rem;
 
-        @media screen and (min-width: 769px) {
+        @include desktop {
           margin-bottom: 2rem;
+          max-height: 5rem;
         };
       };
     
-      &_logoTypeGroup, &_infoGroup {
+      &_logoTypeGroup {
+        display: flex;
+        flex-direction: row;
+
+        @include desktop {
+          flex-direction: column;
+        };
+
+        & > * {
+          @include mobile {
+            width: 50%;
+          };
+        };
+      };
+
+      &_logoType {
+        line-height: 1;
+
+        @include desktop {
+          margin-top: -1rem;
+          line-height: 76.32px;
+        };
+      };
+
+      &_eyelet {
+        margin-top: 18px;
+        margin-bottom: 8px;
+
+        @include mobile {
+          text-align: right;
+        };
+
+        @include desktop {
+          margin: 0;
+        };
+      };
+
+      &_infoGroup {
         display: flex;
         flex-direction: column;
       };
 
-      &_logoType {
-        margin-top: -1rem;
-        // line-height: 46.32px;
-      }
+      &_info {
+        &:first-of-type {
+          margin-bottom: 1rem;
+        };
 
-      &_info:first-of-type {
-        margin-bottom: 1rem;
+        a {
+          display: block;
+
+          @include desktop {
+            display: inline;
+          };
+        }
+
+        &.--imotd {
+          display: none;
+
+          @include desktop {
+            display: block;
+          };
+        }
       }
     };
   };
