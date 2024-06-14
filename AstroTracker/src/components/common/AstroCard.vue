@@ -1,13 +1,12 @@
 <template>
-  <Card style="width: 25rem; overflow: hidden" class="astro-card_wrapper" >
-    <template #header>
-      <img alt="user header" src="https://primefaces.org/cdn/primevue/images/usercard.png" />
-    </template>
+  <Card class="astro-card_wrapper" >
     <template #content>
-      <p class="m-0">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
-          quas!
-      </p>
+      <div class="astro-card_image">
+
+      </div>
+      <div class="astro-card_info">
+
+      </div>
     </template>
   </Card>
 </template>
@@ -20,6 +19,19 @@
     &-card {
       &_wrapper {
         display: flex;
+        height: 170px;
+        max-width: 320px;
+        padding: 20px 15px;
+        border-radius: 10px;
+        background-color: var(--color-grey-900);
+      };
+
+      &_image {
+        width: 50%;
+      };
+
+      &_info {
+        width: 50%;
       };
     };
   };
