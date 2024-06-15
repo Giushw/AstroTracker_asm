@@ -19,16 +19,16 @@ interface EstDiameter {
 };
 
 interface RelVel {
-  kilometers_per_second: number,
-  kilometers_per_hour: number,
-  miles_per_hour: number
+  kilometers_per_second: string,
+  kilometers_per_hour: string,
+  miles_per_hour: string
 };
 
 interface MissDist {
-  astronomical: number,
-  lunar: number,
-  kilometers: number,
-  miles: number
+  astronomical: string,
+  lunar: string,
+  kilometers: string,
+  miles: string
 };
 
 interface ClsApprDate {
@@ -42,7 +42,7 @@ interface ClsApprDate {
 
 type ClsApprDates = ClsApprDate[];
 
-interface NeoEntity {
+export interface NeoEntity {
   links: innerLinks,
   id: string,
   neo_reference_id: string,

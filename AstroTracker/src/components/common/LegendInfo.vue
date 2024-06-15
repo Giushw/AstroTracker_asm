@@ -17,7 +17,7 @@
             </div>
           </div>
           <div>
-            <AstroIcon :out-size="59" :in-size="isMobile ? 43 : 29" :type="undefined" />
+            <AstroIcon :out-size="59" :in-size="isMobile ? 43 : 29" :type="undefined" :sizer="false"/>
             <div class="legend-info_radiuses">
               <div class="legend-info_radiusGroup">
                 <div class="sphere"></div>
@@ -44,11 +44,11 @@
       <template v-if="subSection.type === 'danger'">
         <div class="legend-info_dangerPanel">
           <div>
-            <AstroIcon :out-size="59" :in-size="39" type="safe" />
+            <AstroIcon :out-size="59" :in-size="39" type="safe" :sizer="false" />
             <p class="--small">Asteroid is not a treat</p>
           </div>
           <div>
-            <AstroIcon :out-size="59" :in-size="39" type="danger" />
+            <AstroIcon :out-size="59" :in-size="39" type="danger" :sizer="false" />
             <p class="--small">Asteroid may be dangerous</p>
           </div>
         </div>

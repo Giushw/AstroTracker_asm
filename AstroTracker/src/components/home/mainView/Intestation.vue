@@ -12,7 +12,7 @@
       <h1 class="main-intestation_logoType">Astro tracker</h1>
         
       <div class="main-intestation_eyeletGroup">
-        <h3 class="main-intestation_eyelet">{{day}}</h3>
+        <h3 class="main-intestation_eyelet">{{ date }}</h3>
 
         <template v-if="isMobile">
           <SlideDialog label="Info" slide="top" allign="right">
@@ -36,7 +36,7 @@
       
       <p class="main-intestation_info --imotd">
         Image of the day:  
-        <a href="https://images.nasa.gov/">Calliope galaxy, James Webb Telescope</a>
+        <a href="https://images.nasa.gov/">{{ astroStore.apodName }}</a>
       </p>
     </SplitterPanel>
   </Splitter>
@@ -46,11 +46,16 @@
   import Splitter from 'primevue/splitter';
   import SplitterPanel from 'primevue/splitterpanel';
   import SlideDialog from '../../common/SlideDialog.vue';
+  import {useAstroData} from '../../../stores/astroData';
+  import {formatTextualDate} from '../../../lib/utils';
 
   defineProps<{
-    day: string;
     isMobile: boolean;
   }>();
+
+  const astroStore = useAstroData();
+
+  const date = formatTextualDate(astroStore.getDataDate, true);
 </script>
 
 <style lang="scss">

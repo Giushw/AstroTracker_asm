@@ -15,15 +15,59 @@
     outSize: number;
     inSize: number;
     type: AsteroidType;
+    sizer: boolean
   }>();
 
+
+  const outerSizerSphere = (num: number) => {
+    if (!props.sizer) {
+      return num;
+    } else {
+      if (num <= 100) {
+        return 50;
+      };
+
+      if (num > 100 && num <= 1000) {
+        return 70;
+      };
+
+      if (num > 1000 && num <= 10000) {
+        return 100;
+      }
+
+      if (num > 1000) {
+        return 100;
+      }
+    }
+  };
+
+  const innerSizerSphere = (num: number) => {
+    if (!props.sizer) {
+      return num;
+    } else {
+      if (num <= 100) {
+        return 25;
+      };
+
+      if (num > 100 && num <= 1000) {
+        return 35;
+      };
+
+      if (num > 1000) {
+        return 50;
+      }
+    }
+  };
+
   const outerSize = computed(() => ({
-    '--outer-size': `${props.outSize}px`,
+    '--outer-size': `${outerSizerSphere(props.outSize)}px`,
   }));
 
   const innerSize = computed(() => ({
-    '--inner-size': `${props.inSize}px`,
+    '--inner-size': `${innerSizerSphere(props.inSize)}px`,
   }));
+
+
 </script>
 
 <style lang="scss">

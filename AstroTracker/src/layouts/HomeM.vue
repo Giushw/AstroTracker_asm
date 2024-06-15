@@ -1,10 +1,8 @@
 <template>
   <div class="home-mobile_wrapper">
-    <Intestation :day="'25 January 2023'" is-mobile/>
+    <Intestation is-mobile/>
 
-    <!-- <AstroCards /> -->
     <AstroCardList />
-    <!-- <div class="home-mobile_placeholder"></div> -->
 
     <div class="home-mobile_legendBtn">
       <slideDialog label="Legend" slide="bottom" allign="center">

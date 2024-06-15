@@ -28,8 +28,8 @@
     onUnmounted
   } from 'vue';
   import Image from 'primevue/image';
+  import {useAstroData} from './stores/astroData';
   import type {Apods} from './types/decoders/Apods';
-  import type {NeoWs} from './types/decoders/NeoWs';
   import {getApod} from './server/Apod';
   import {getFeed} from './server/NeoWs';
   import HomeD from './layouts/HomeD.vue';
@@ -37,8 +37,9 @@
   import FooterBanner from './components/home/FooterBanner.vue';
   import {getRandomInt} from './lib/utils';
 
+  const astroStore = useAstroData();
+
   const apodData: Ref<Apods | null> = ref(null);
-  const neowData: Ref<NeoWs | null> = ref(null);
   const loading = ref(true);
   const width = ref(window.innerWidth);
 
@@ -48,17 +49,12 @@
 
   const fetchData = async () => {
     try {
-      const dataA = await getApod();
-      const dataF = await getFeed();
+      const dataA = await getApod('2024-06-09', '2024-06-14');
+      const dataF = await getFeed('2024-06-14', '2024-06-14');
 
       apodData.value = dataA;
-      // console.log('Fetched data: ', data);
-      // console.log('apodData.value: ', apodData.value);
-      neowData.value = dataF;
-      // console.log('Fetched data feed: ', dataF);
-      // console.log('feedData.value: ', neowData.value);
+      astroStore.setAstroData(dataF);
 
-      
     } catch (error) {
       console.error('Error fetching data:', error);
     } finally {
@@ -83,13 +79,18 @@
 
   const randomBg: ComputedRef<string> = computed(() => {
     if (apodData && apodData.value) {
-      const listOfUrl = apodData?.value.map(val => val.hdurl);
+      const listOfUrl = apodData.value.map(val => ({name: val.title, url: val.hdurl}));
       const length = listOfUrl.length;
-      return listOfUrl[getRandomInt(length)];
+      const randomIndex = getRandomInt(length);
+
+      astroStore.setApodName(listOfUrl[randomIndex].name)
+
+      return listOfUrl[randomIndex].url;
     } else {
       return './assets/images/wall_def.png';
     };
   });
+
 </script>
 
 <style lang="scss">

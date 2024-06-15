@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {COMMON_PARAMS, formattedToday, formatted7PriorDate} from './common';
+import {COMMON_PARAMS, formattedToday, formattedPriorDate} from './common';
 import type {Apods} from '../types/decoders/Apods';
 
 const apiClient = axios.create({
@@ -27,7 +27,7 @@ export const getApod = async (
     const response = await apiClient.get('/apod', {
       params: {
         ...COMMON_PARAMS,
-        start_date: yearStart ?? formatted7PriorDate,
+        start_date: yearStart ?? formattedPriorDate,
         end_date: yearEnd ?? formattedToday,
       },
     });

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {COMMON_PARAMS, formattedToday, formatted1PriorDate} from './common';
+import {COMMON_PARAMS, formattedToday, formattedPriorDate} from './common';
 import type {NeoWs} from '../types/decoders/NeoWs';
 
 const apiClient = axios.create({
@@ -27,7 +27,7 @@ export const getFeed = async (
     const response = await apiClient.get('/feed', {
       params: {
         ...COMMON_PARAMS,
-        start_date: startDate ?? formatted1PriorDate,
+        start_date: startDate ?? formattedPriorDate,
         end_date: endDate ?? formattedToday,
       },
     });

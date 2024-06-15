@@ -3,20 +3,18 @@
     <template #content>
       <div class="astro-card_wrapper">
         <div class="astro-card_image">
-          <AstroIcon :out-size="props.oSize" :in-size="props.iSize" type="safe" />
+          <AstroIcon :out-size="70" :in-size="props.data.diameter.min" type="safe" sizer/>
         </div>
 
         <div class="astro-card_info">
-          <!-- <h3>2023BH1</h3> -->
-          <h3>{{props.data.name}}</h3>
+          <h3>{{ formattedName }}</h3>
 
           <div class="infoGroup">
             <p class="--small">Time of Close Contact</p>
 
             <div class="infoGroup_inner">
-              <!-- <h4>25 JAN 2023</h4> -->
-              <h4>{{props.data.contactTime}}</h4>
-              <p class="--small">00:02:18</p>
+              <h4>{{ formattedDate }}</h4>
+              <p class="--small">{{ dateHour[1] }}</p>
             </div>
           </div>
 
@@ -24,8 +22,7 @@
             <p class="--small">Distance</p>
 
             <div class="infoGroup_inner">
-              <!-- <h4>1,377,769</h4> -->
-              <h4>{{props.data.dist}}</h4>
+              <h4>{{ formattedDistance }}</h4>
               <p class="--small">Km</p>
             </div>
           </div>
@@ -38,18 +35,34 @@
 <script setup lang="ts">
   import Card from 'primevue/card';
   import AstroIcon from './AstroIcon.vue';
+  import {formatAsteroidName, formatNumberWithCommas, formatTextualDate} from '../../lib/utils';
 
-  interface AstroData {
+  export interface SlimNeoEntity {
+    id: string,
     name: string,
-    contactTime: string,
-    dist: string
+    dangerous: boolean,
+    diameter: {
+      min: number,
+      max: number
+    },
+    closeApproac: {
+      date: {
+        normal: string,
+        full: string
+      },
+      velocity: string,
+      distance: string
+    }
   }
 
   const props = defineProps<{
-    oSize: number;
-    iSize: number;
-    data: AstroData;
+    data: SlimNeoEntity;
   }>();
+
+  const formattedName = formatAsteroidName(props.data.name);
+  const formattedDate = formatTextualDate(props.data.closeApproac.date.normal);
+  const dateHour = props.data.closeApproac.date.full.split(' ');
+  const formattedDistance = formatNumberWithCommas(props.data.closeApproac.distance);
 </script>
 
 <style lang="scss">
@@ -94,6 +107,10 @@
           &_inner {
             display: flex;
             align-items: center;
+
+            h4 {
+              text-transform: uppercase;
+            }
 
             & .--small {
               margin-left: 10px;
