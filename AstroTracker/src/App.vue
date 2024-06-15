@@ -77,12 +77,12 @@
       z-index: 0;
       height: 100%;
       width: 100vw;
-      padding: 1.75rem 1.625rem;
+      padding: 28px 26px;
       background: no-repeat url('./assets/images/wall_def.png');
       background-size: cover;
 
       @include desktop {
-        padding: 3.125rem 7.5rem;
+        padding: 50px 120px;
         height: 100vh;
       };
 

@@ -14,16 +14,8 @@
     padding: 0;
     background-color: transparent;
   };
+  
   & .p-dialog-header-icon {
     color: var(--color-white);
-  }
+  };
 };
-
-/*
-p-dialog	Container element.
-p-dialog-titlebar	Container of header.
-p-dialog-title	Header element.
-p-dialog-titlebar-icon	Icon container inside header.
-p-dialog-titlebar-close	Close icon element.
-p-dialog-content
-*/

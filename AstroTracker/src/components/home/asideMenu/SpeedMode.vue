@@ -39,8 +39,8 @@
     &-mode {
       width: 100%;
       height: 100%;
-      padding: 0.625rem 0.938rem;
-      border-radius: 0.938rem;
+      padding: 10px 15px;
+      border-radius: 15px;
       background-color: var(--trasparent-grey);
 
       &_content {
@@ -49,12 +49,12 @@
 
       &_footer {
         display: flex;
-        margin-top: 0.625rem;
+        margin-top: 10px;
       }
 
       &_info {
         margin: 0;
-        margin-left: 1.25rem;
+        margin-left: 20px;
       }
     }
   }

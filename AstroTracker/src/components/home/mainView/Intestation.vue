@@ -58,11 +58,11 @@
     &-intestation {
       &_wrapper {
         width: 100%;
-        margin-bottom: 2.5rem;
+        margin-bottom: 40px;
 
         @include desktop {
-          margin-bottom: 2rem;
-          max-height: 5rem;
+          margin-bottom: 32px;
+          max-height: 80px;
         };
       };
     
@@ -85,7 +85,7 @@
         line-height: 1;
 
         @include desktop {
-          margin-top: -1rem;
+          margin-top: -16px;
           line-height: 76.32px;
         };
       };
@@ -111,7 +111,7 @@
       &_info {
         &:first-of-type {
           @include desktop {
-            margin-bottom: 1rem;
+            margin-bottom: 16px;
           };
         };
 

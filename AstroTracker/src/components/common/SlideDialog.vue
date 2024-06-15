@@ -13,7 +13,7 @@
 
     <Dialog 
       v-model:visible="visible" 
-      :style="{ width: '25rem' }" 
+      :style="{ width: '400px' }" 
       :position="position" 
       :modal="true" 
       :draggable="false"

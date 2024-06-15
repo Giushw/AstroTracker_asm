@@ -103,8 +103,8 @@
   .legend {
     &-info {
       width: 100%; 
-      padding: 0.625rem 0.938rem;
-      border-radius: 0.938rem;
+      padding: 10px 15px;
+      border-radius: 15px;
       background-color: var(--trasparent-grey);
 
       &_subtitle {

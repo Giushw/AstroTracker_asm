@@ -33,10 +33,10 @@
     & .p-inputswitch-slider {
       &::before {
         background-color: var(--color-grey-900);
-        transform: translateX(1.2rem);
+        transform: translateX(20px);
 
         @include desktop {
-          transform: translateX(2rem);
+          transform: translateX(32px);
         };
       };
     };

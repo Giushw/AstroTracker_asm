@@ -12,13 +12,13 @@
   .footer {
     &_wrapper {
       width: 100vw;
-      padding: 4.563rem 3.25rem 0.938rem;
+      padding: 73px 52px 15px;
       background-color: var(--color-white);
       position: relative;
       z-index: 3;
 
       @include desktop {
-        padding :0.813rem 0;
+        padding: 13px 0;
         border-radius: 25% 25% 0 0;
         position: absolute;
         bottom: 0;
