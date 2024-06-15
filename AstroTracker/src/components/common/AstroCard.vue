@@ -20,7 +20,7 @@
       &_wrapper {
         display: flex;
         height: 170px;
-        max-width: 320px;
+        width: 100%;
         padding: 20px 15px;
         border-radius: 10px;
         background-color: var(--color-grey-900);

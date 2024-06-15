@@ -19,6 +19,7 @@
   import AstroCardList from '../components/home/mainView/AstroCardList.vue';
   import slideDialog from '../components/common/SlideDialog.vue';
   import LegendInfo from '../components/common/LegendInfo.vue';
+
 </script>
 
 <style lang="scss">
@@ -27,10 +28,7 @@
       &_wrapper {
         display: flex;
         flex-direction: column;
-        position: relative;
-        height: 100%;
-        width: 100%;
-        z-index: 2;
+        padding: 28px 26px;
         background-color: transparent;
       };
 

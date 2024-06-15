@@ -13,4 +13,14 @@ export const formatDate = (date: Date): string => {
   const day = String(date.getDate()).padStart(2, '0');
   
   return `${year}-${month}-${day}`;
-}
+};
+
+/**
+ * getRandomInt
+ * Return a random integer form 0 to max;
+ * @param {number} max - The Max integer.
+ * @returns {number} A number.
+ * @example 
+ * const data = getRandomInt(2);
+ */
+export const getRandomInt = (max: number): number =>  Math.floor(Math.random() * max);

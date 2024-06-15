@@ -4,7 +4,7 @@
       <h2 class="legend-info_title">Legend</h2>
     </template>
     <template #content>
-      <LegendInfo />
+      <LegendInfo :is-mobile="false" />
     </template>
   </Card>
 </template>
@@ -20,7 +20,7 @@
     &-info {
       width: 100%; 
       padding: 10px 15px;
-      border-radius: 115px;
+      border-radius: 15px;
       background-color: var(--trasparent-grey);
     };
   };

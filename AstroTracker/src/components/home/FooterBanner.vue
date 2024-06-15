@@ -11,18 +11,18 @@
 <style lang="scss">
   .footer {
     &_wrapper {
-      width: 100vw;
       padding: 73px 52px 15px;
       background-color: var(--color-white);
-      position: relative;
-      z-index: 3;
+    
 
       @include desktop {
-        padding: 13px 0;
-        border-radius: 25% 25% 0 0;
         position: absolute;
+        z-index: 1;
         bottom: 0;
         left: 0;
+        width: 100vw;
+        padding: 13px 0;
+        border-radius: 25% 25% 0 0;
       };
     };
 
