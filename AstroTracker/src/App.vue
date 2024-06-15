@@ -29,13 +29,16 @@
   } from 'vue';
   import Image from 'primevue/image';
   import type {Apods} from './types/decoders/Apods';
+  import type {NeoWs} from './types/decoders/NeoWs';
   import {getApod} from './server/Apod';
+  import {getFeed} from './server/NeoWs';
   import HomeD from './layouts/HomeD.vue';
   import HomeM from './layouts/HomeM.vue';
   import FooterBanner from './components/home/FooterBanner.vue';
   import {getRandomInt} from './lib/utils';
 
   const apodData: Ref<Apods | null> = ref(null);
+  const neowData: Ref<NeoWs | null> = ref(null);
   const loading = ref(true);
   const width = ref(window.innerWidth);
 
@@ -45,10 +48,16 @@
 
   const fetchData = async () => {
     try {
-      const data = await getApod();
-      apodData.value = data;
+      const dataA = await getApod();
+      const dataF = await getFeed();
+
+      apodData.value = dataA;
       // console.log('Fetched data: ', data);
       // console.log('apodData.value: ', apodData.value);
+      neowData.value = dataF;
+      // console.log('Fetched data feed: ', dataF);
+      // console.log('feedData.value: ', neowData.value);
+
       
     } catch (error) {
       console.error('Error fetching data:', error);

@@ -1,5 +1,6 @@
 import axios from 'axios';
-import {COMMON_PARAMS} from './common';
+import {COMMON_PARAMS, formattedToday, formatted1PriorDate} from './common';
+import type {NeoWs} from '../types/decoders/NeoWs';
 
 const apiClient = axios.create({
   baseURL: 'https://api.nasa.gov/neo/rest/v1',
@@ -14,17 +15,20 @@ const apiClient = axios.create({
  * Start and End date should be formatted as YYYY-MM-DD (e.g., 2015-09-08).
  * @param {string} startDate - The starting date of the timelapse.
  * @param {string} endDate - The ending date of the timelapse.
- * @returns {Promise<Object>} A promise that resolves to the fetched Neo data.
+ * @returns {Promise<NeoWs>} A promise that resolves to the fetched Neo data.
  * @example 
  * const data = await getFeed('2023-06-01', '2023-06-07');
  */
-export const getFeed = async (startDate: string, endDate: string): Promise<object> => {
+export const getFeed = async (
+  startDate?: string,
+  endDate?: string
+): Promise<NeoWs> => {
   try {
     const response = await apiClient.get('/feed', {
       params: {
         ...COMMON_PARAMS,
-        start_date: startDate,
-        end_date: endDate,
+        start_date: startDate ?? formatted1PriorDate,
+        end_date: endDate ?? formattedToday,
       },
     });
     return response.data;

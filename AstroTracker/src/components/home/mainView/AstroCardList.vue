@@ -1,7 +1,7 @@
 <template>
   <section class="astro-cList_wrapper" >
     <div class="astro-cList_item" v-for="card in cards" :key="card">
-      <AstroCard />
+      <AstroCard :o-size="130" :i-size="50" :data="astroData"/>
     </div>
   </section>
 </template>
@@ -10,6 +10,11 @@
   import AstroCard from '../../common/AstroCard.vue';
 
   const cards = [1, 2, 3, 4, 5];
+  const astroData = {
+    name: '2023BH1',
+    contactTime: '25 JAN 2023',
+    dist: '1,377,769'
+  };
 </script>
 
 <style lang="scss">
