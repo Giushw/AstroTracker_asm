@@ -4,7 +4,7 @@
       <template #header>
         <h4 class="legend-info_subtitle">{{subSection.title}}</h4>
       </template>
-      <!-- // TODO: implement Graphs -->
+      
       <template v-if="subSection.type === 'size'">
         <div class="legend-info_sizePanel">
           <div>
@@ -35,7 +35,7 @@
 
       <template v-if="subSection.type === 'speed'">
         <div class="legend-info_speedPanel">
-          <div class="scie"></div>
+          <div class="legend-info_trails"></div>
           <Divider />
           <p class="--small"> XXXX Km/s</p>
         </div>
@@ -89,17 +89,9 @@
   const activeSubsection: ComputedRef<SubsectionPanel[]> = computed(() => {
     return props.isMobile ? mobileSection : desktopSections;
   });
-
 </script>
 
 <style lang="scss">
-  .scie {
-    // width: 43.89px;
-    width: 218px;
-    height: 43.89px;
-    background-color: var(--color-grey-100); 
-  };
-
   .legend {
     &-info {
       width: 100%; 
@@ -235,6 +227,11 @@
         p {
           margin-left: 15px;
         }
+      };
+
+      &_trails {
+        width: 100%;
+        height: 43.89px;
       };
     };
   };

@@ -43,6 +43,7 @@
 </template>
 
 <script setup lang="ts">
+  import {type ComputedRef, computed} from 'vue';
   import Splitter from 'primevue/splitter';
   import SplitterPanel from 'primevue/splitterpanel';
   import SlideDialog from '../../common/SlideDialog.vue';
@@ -55,7 +56,9 @@
 
   const astroStore = useAstroData();
 
-  const date = formatTextualDate(astroStore.getDataDate, true);
+  const date: ComputedRef<string> = computed(() => {
+    return astroStore.getDataDate ? formatTextualDate(astroStore.getDataDate, true) : 'N/D';
+  });
 </script>
 
 <style lang="scss">

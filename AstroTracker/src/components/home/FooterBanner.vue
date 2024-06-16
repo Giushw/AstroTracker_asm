@@ -1,6 +1,6 @@
 <template>
   <footer class="footer_wrapper">
-    <Image class="footer_logo" src="./assets/logo_placeholder.svg" alt="The Visual Agency Logo" width="270" height="25"/>
+    <Image class="footer_logo" src="./assets/logo.svg" alt="The Visual Agency Logo" width="270" height="25"/>
   </footer>
 </template>
 

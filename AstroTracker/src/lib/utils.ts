@@ -1,3 +1,6 @@
+import {SlimNeoEntity} from "../components/common/AstroCard.vue";
+import {NeoEntity} from "../types/decoders/NeoWs";
+
 /**
  * formatDate
  * Format passed Date into 'YYYY-MM-DD'.
@@ -8,15 +11,12 @@
  */
 export const formatDate = (date: Date): string => {
   const year = date.getFullYear();
-  // getMonth() is zero-based
-  const month = String(date.getMonth() + 1).padStart(2, '0'); 
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // getMonth() is zero-based
   const day = String(date.getDate()).padStart(2, '0');
   
   return `${year}-${month}-${day}`;
 };
 
-
-// utils/formatDate.ts
 const monthNames = [
   'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
   'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
@@ -101,3 +101,51 @@ export function formatAsteroidName(name: string): string {
  * const data = getRandomInt(2);
  */
 export const getRandomInt = (max: number): number =>  Math.floor(Math.random() * max);
+
+/**
+ * parseAstros
+ * Return a parsed response for astro data;
+ * @param {NeoEntity[]} collection - An array of NeoEntity.
+ * @returns {SlimNeoEntity[]} A lighter version of the response data for visualization.
+ * @example 
+ * const data = parseAstros(neoEntities);
+ */
+export const parseAstros = (collection: NeoEntity[]) : SlimNeoEntity[] => {
+  const parsedAstro = collection.map(c => ({
+    id: c.neo_reference_id,
+    name: c.name,
+    dangerous: c.is_potentially_hazardous_asteroid,
+    diameter: {
+      min: c.estimated_diameter.meters.estimated_diameter_min,
+      max: c.estimated_diameter.meters.estimated_diameter_max
+    },
+    closeApproac: {
+      date: {
+        normal: c.close_approach_data[0].close_approach_date,
+        full: c.close_approach_data[0].close_approach_date_full
+      },
+      velocity: c.close_approach_data[0].relative_velocity.kilometers_per_second,
+      distance: c.close_approach_data[0].miss_distance.kilometers
+    }
+  }));
+  return parsedAstro;
+};
+
+/**
+ * hoursSince
+ * Return a time since the passed data have come;
+ * @param {string} dateString - The starting point.
+ * @returns {number} a number signaling how much time have passed in hours.
+ * @example 
+ * const hours = hoursSince('2024-Jun-14 10:57');
+ */
+export const hoursSince = (dateString: string): number => {
+  const date = new Date(dateString);
+  const now = new Date();
+
+  const diffInMs = now.getTime() - date.getTime();
+
+  const hoursPassed = Math.floor(diffInMs / (1000 * 60 * 60));
+
+  return hoursPassed;
+}

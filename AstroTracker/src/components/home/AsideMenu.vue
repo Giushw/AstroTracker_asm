@@ -2,7 +2,7 @@
   <aside>
     <Splitter layout="vertical" class="home-aside_wrapper" :gutter-size="10">
       <SplitterPanel :size="30" :min-size="30"> 
-        <SpeedMode  @switch-speed-mode="(e) => console.log('speed mode is active? ', e.value)"/>
+        <SpeedMode  @switch-speed-mode="(e) => console.info('speed mode is active? ', e.value)"/>
       </SplitterPanel>
       <SplitterPanel :size="80"  :min-size="80">
         <LegendWrapper />

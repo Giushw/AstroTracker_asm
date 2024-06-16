@@ -49,8 +49,8 @@
 
   const fetchData = async () => {
     try {
-      const dataA = await getApod('2024-06-09', '2024-06-14');
-      const dataF = await getFeed('2024-06-14', '2024-06-14');
+      const dataA = await getApod();
+      const dataF = await getFeed('2024-06-16', '2024-06-16');
 
       apodData.value = dataA;
       astroStore.setAstroData(dataF);
@@ -109,7 +109,6 @@
 
       &_backdrop {
         position: relative;
-        // z-index: 0;
         height: 100%;
         width: 100%;
       };
